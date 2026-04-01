@@ -1,0 +1,3 @@
+repository "StarterKits/StarterKits@368007@cloud"
+  path "/"
+    smartbranch "/main/development"
