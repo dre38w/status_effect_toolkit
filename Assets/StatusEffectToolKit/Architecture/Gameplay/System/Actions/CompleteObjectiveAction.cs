@@ -12,7 +12,7 @@ namespace Gameplay.System.StatusSystem.Actions
     public class CompleteObjectiveAction : ActionHandler, IInteractable
     {
         [SerializeField]
-        private ActivateObjectTrigger activateLightTrigger;
+        private ActivateObjectTrigger activationTrigger;
 
         [SerializeField]
         private Transform endPoint;
@@ -32,8 +32,8 @@ namespace Gameplay.System.StatusSystem.Actions
         public override void Start()
         {
             base.Start();
-            activateLightTrigger.OnEnteredTriggerObject.AddListener(OnMechanismInteractable);
-            activateLightTrigger.OnExitedTriggerObject.AddListener(OnMechanismNotInteractable);
+            activationTrigger.OnEnteredTriggerObject.AddListener(OnMechanismInteractable);
+            activationTrigger.OnExitedTriggerObject.AddListener(OnMechanismNotInteractable);
         }
 
         private void OnMechanismInteractable()
@@ -85,8 +85,8 @@ namespace Gameplay.System.StatusSystem.Actions
 
         private void OnDestroy()
         {
-            activateLightTrigger.OnEnteredTriggerObject.RemoveListener(OnMechanismInteractable);
-            activateLightTrigger.OnExitedTriggerObject.RemoveListener(OnMechanismNotInteractable);
+            activationTrigger.OnEnteredTriggerObject.RemoveListener(OnMechanismInteractable);
+            activationTrigger.OnExitedTriggerObject.RemoveListener(OnMechanismNotInteractable);
 
             moveToPositionCoroutine = null;
         }
