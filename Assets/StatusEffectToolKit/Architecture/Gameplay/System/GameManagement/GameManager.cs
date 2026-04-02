@@ -72,7 +72,6 @@ namespace Gameplay.System
             if (playerHealth.State == HealthHandler.CurrentState.Dead)
             {
                 //set the status level to the max, of which should always be set to the Death status effect
-                //NOTE: Future update will contain a query system to more directly look up and set specific status effects
                 StatusManager.Instance.SetStatusLevel(StatusManager.Instance.StatusSettings.statusLevels.Count - 1);
             }
         }

@@ -20,12 +20,18 @@ namespace Service.Framework.StatusSystem
         [HideInInspector]
         public OnStatusLevelChangedEvent OnStatusLevelChanged = new OnStatusLevelChangedEvent();
 
+        /// <summary>
+        /// The config data for the on the overall Status Level including the Status Effect data
+        /// </summary>
         private StatusEffectSettings.StatusLevelConfig currentStatusLevelConfig;
         public StatusEffectSettings.StatusLevelConfig CurrentStatusLevelConfig
         {
             get { return currentStatusLevelConfig; }
             set { currentStatusLevelConfig = value; }
         }
+        /// <summary>
+        /// The ScriptableObject that holds the data that is read by the game
+        /// </summary>
         private StatusEffectSettings statusSettings;
         public StatusEffectSettings StatusSettings
         {
@@ -40,6 +46,9 @@ namespace Service.Framework.StatusSystem
             set { statusLevel = value; }
         }
 
+        /// <summary>
+        /// The actions that influence increasing or decreasing the Status Level
+        /// </summary>
         private List<ActionHandler> actionHandlers = new List<ActionHandler>();
         public List<ActionHandler> ActionHandlers
         {
@@ -57,6 +66,7 @@ namespace Service.Framework.StatusSystem
                 return;
             }
             Instance = this;
+            //load in the data
             statusSettings = StatusSettingsUtility.StatusEffectSettings;
 
             ValidateData();
@@ -139,6 +149,9 @@ namespace Service.Framework.StatusSystem
             UpdateActionHandlers();
         }
 
+        /// <summary>
+        /// Update all the action handlers through the manager
+        /// </summary>
         private void UpdateActionHandlers()
         {
             if (!isActionHandlerUpdating)
@@ -154,6 +167,11 @@ namespace Service.Framework.StatusSystem
             }
         }
 
+        /// <summary>
+        /// Used to set the update state for the action handlers.
+        /// This is useful for optimization.  Stopping unnecessary Update calls and restarting them when needed
+        /// </summary>
+        /// <param name="state"></param>
         public void SetActionHandlersUpdateState(bool state)
         {
             isActionHandlerUpdating = state;
@@ -175,21 +193,16 @@ namespace Service.Framework.StatusSystem
             OnStatusLevelChanged.Invoke(statusLevel, currentStatusLevelConfig);
         }
 
+        /// <summary>
+        /// Used to set the status level to a specific level.
+        /// Useful if a mechanic causes a specific effect to run
+        /// </summary>
+        /// <param name="value"></param>
         public void SetStatusLevel(int value)
         {
             statusLevel = value;
             currentStatusLevelConfig = statusSettings.statusLevels[statusLevel];
             OnStatusLevelChanged.Invoke(statusLevel, currentStatusLevelConfig);
-        }
-
-        /// <summary>
-        /// In the event other managers need to control the max level
-        /// </summary>
-        /// <param name="value"></param>
-        public void SetMaxStatusLevel(int value)
-        {
-            statusSettings.maxStatusLevel = value;
-            ValidateData();
         }
 
         private void OnDestroy()

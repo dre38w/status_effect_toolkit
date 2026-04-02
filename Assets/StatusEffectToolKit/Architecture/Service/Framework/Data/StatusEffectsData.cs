@@ -8,6 +8,9 @@ using System;
 
 namespace Service.Framework.StatusSystem
 {
+    /// <summary>
+    /// The data associated with the individual Status Effect
+    /// </summary>
     [Serializable]
     public class StatusEffectsData
     {

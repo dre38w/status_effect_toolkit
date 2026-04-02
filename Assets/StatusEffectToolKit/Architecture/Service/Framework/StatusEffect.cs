@@ -34,6 +34,7 @@ namespace Service.Framework.StatusSystem
         [Tooltip("Set the status effect and severity to associate with this class and its purpose.")]
         public StatusEffectsData statusEffectData;
 
+        //The current status effect and its associated data
         private StatusEffectsData currentStatusEffectData;
 
         private float effectDuration;
@@ -42,6 +43,7 @@ namespace Service.Framework.StatusSystem
         private Coroutine effectRunCoroutine;
         private Coroutine effectWaitCoroutine;
 
+        //is the effect currently running?
         private bool isRunning = false;
         public bool IsRunning
         {
@@ -65,6 +67,10 @@ namespace Service.Framework.StatusSystem
             StatusEffectManager.RemoveStatusEffect(this);
         }
 
+        /// <summary>
+        /// Do Update logic based on State
+        /// </summary>
+        /// <param name="deltaTime"></param>
         public virtual void StatusEffectUpdate(float deltaTime)
         {
             switch (State)
@@ -100,6 +106,10 @@ namespace Service.Framework.StatusSystem
             }
         }
 
+        /// <summary>
+        /// Handle initialization logic
+        /// </summary>
+        /// <param name="data"></param>
         public virtual void HandleStatusEffectStart(StatusEffectsData data)
         {
             //if requiring a wait time before starting the effect
@@ -145,55 +155,69 @@ namespace Service.Framework.StatusSystem
             SetState(StatusEffectState.RunStart);
         }
 
+        /// <summary>
+        /// Used to do logic after initialization and right before running.
+        /// Useful when handling pending state
+        /// </summary>
         public virtual void HandleRunStart()
         {
 
         }
 
+        /// <summary>
+        /// Used while the status effect is running
+        /// </summary>
+        /// <param name="deltaTime"></param>
         public virtual void HandleStatusEffectRunning(float deltaTime)
         {
 
         }
 
+        /// <summary>
+        /// Used when doing status effect end logic
+        /// </summary>
+        /// <param name="deltaTime"></param>
         public virtual void StatusEffectEnding(float deltaTime)
         {
             
         }
 
+        /// <summary>
+        /// Used when you want to pause the status effect
+        /// </summary>
+        /// <param name="deltaTime"></param>
         public virtual void StatusEffectPending(float deltaTime)
         {
 
         }
 
+        /// <summary>
+        /// Used when you want to start an Update based ending sequence
+        /// </summary>
         public void StartEndingStatusEffect()
         {
             isRunning = false;
             SetState(StatusEffectState.Ending);
         }
 
+        /// <summary>
+        /// Used to immediately end the status effect
+        /// </summary>
         public virtual void EndStatusEffect()
         {
             isRunning = false;
             SetState(StatusEffectState.Ended);
         }
 
-        //public void StopStatusEffect()
-        //{
-        //    isRunning = false;
-        //    EndStatusEffect();
-        //}
-
+        /// <summary>
+        /// Do logic after the effect has ended
+        /// </summary>
         public virtual void StatusEffectEnded()
         {
             OnStatusEffectEnded.Invoke();
 
             if (isRunning)
             {
-                //if (effectRunCoroutine != null)
-                //{
-                //    StopCoroutine(effectRunCoroutine);
-                //    effectRunCoroutine = null;
-                //}
                 StopRunCoroutine();
 
                 //if this is a periodic status effect, occassionally restart it
@@ -220,6 +244,10 @@ namespace Service.Framework.StatusSystem
             }
         }
 
+        /// <summary>
+        /// Do State transition logic
+        /// </summary>
+        /// <param name="state"></param>
         public virtual void SetState(StatusEffectState state)
         {
             if (State == state)
@@ -242,6 +270,7 @@ namespace Service.Framework.StatusSystem
             }
         }
 
+        #region Timing Coroutines
         private IEnumerator HandlePeriodicDuration()
         {
             yield return new WaitForSeconds(effectDuration);
@@ -261,7 +290,12 @@ namespace Service.Framework.StatusSystem
             isRunning = true;
             HandleStatusEffectStart(currentStatusEffectData);
         }
+        #endregion
 
+        /// <summary>
+        /// Helper methods to stop coroutines
+        /// </summary>
+        
         public void StopRunCoroutine()
         {
             if (effectRunCoroutine != null)

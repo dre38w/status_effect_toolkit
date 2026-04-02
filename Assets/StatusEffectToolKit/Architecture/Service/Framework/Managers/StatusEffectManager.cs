@@ -23,6 +23,9 @@ namespace Service.Framework.StatusSystem
 
         public static StatusEffectManager Instance;
 
+        /// <summary>
+        /// The data used when a Status Level changes
+        /// </summary>
         [Serializable]
         public class ConfigFields
         {
@@ -37,8 +40,14 @@ namespace Service.Framework.StatusSystem
         private ConfigFields configFields;
         private float currentTimeToSelectEffect;
 
+        /// <summary>
+        /// The config data for the on the overall Status Level including the Status Effect data
+        /// </summary>
         private StatusEffectSettings.StatusLevelConfig currentStatusEffectConfig;
 
+        /// <summary>
+        /// List of all status effects
+        /// </summary>
         private List<StatusEffect> statusEffects = new List<StatusEffect>();
 
         private Coroutine statusEffectSelectionCoroutine;
@@ -134,6 +143,9 @@ namespace Service.Framework.StatusSystem
             }
         }
 
+        /// <summary>
+        /// Begin the periodic effect selection process
+        /// </summary>
         private void StartPeriodicSelection()
         {
             if (!currentStatusEffectConfig.isPeriodicStatusLevel)
@@ -155,35 +167,44 @@ namespace Service.Framework.StatusSystem
             {
                 float duration;
 
+                //if time is random
                 if (currentStatusEffectConfig.isDurationRandom)
                 {
                     duration = Random.Range(currentStatusEffectConfig.minDuration, currentStatusEffectConfig.maxDuration);
                 }
+                //if time is preset
                 else
                 {
                     duration = currentStatusEffectConfig.duration;
                 }
                 yield return new WaitForSeconds(duration);
 
+                //end previous effects
                 StartEndingAllStatusEffects();
 
                 float restartWaitDuration;
 
+                //if time is random
                 if (currentStatusEffectConfig.isRestartWaitTimeRandom)
                 {
                     restartWaitDuration = Random.Range(currentStatusEffectConfig.minWaitTime, currentStatusEffectConfig.maxWaitTime);
                 }
+                //if time is preset
                 else
                 {
                     restartWaitDuration = currentStatusEffectConfig.restartWaitTime;
                 }
                 yield return new WaitForSeconds(restartWaitDuration);
 
+                //now select the new effect
                 SetCurrentStatusEffect();
             }
             statusLevelPeriodicCoroutine = null;
         }
 
+        /// <summary>
+        /// Handles selecting the next effect
+        /// </summary>
         private void SetCurrentStatusEffect()
         {
             if (currentStatusEffectConfig.statusEffectsData.Count == 0)
@@ -192,6 +213,7 @@ namespace Service.Framework.StatusSystem
                 return;
             }
 
+            //select a random effect
             if (currentStatusEffectConfig.chooseRandomStatusEffect)
             {
                 //choose a random status effect from the list of preset status effects
@@ -200,7 +222,7 @@ namespace Service.Framework.StatusSystem
                 OnStatusEffectSelected.Invoke(currentStatusEffectConfig.statusEffectsData[effectIndex]);
                 return;
             }
-            //run all the status effects in our effects list
+            //otherwise run all the status effects in our effects list
             for (int i = 0; i < currentStatusEffectConfig.statusEffectsData.Count; i++)
             {
                 OnStatusEffectSelected.Invoke(currentStatusEffectConfig.statusEffectsData[i]);
@@ -229,6 +251,9 @@ namespace Service.Framework.StatusSystem
             }
         }
 
+        /// <summary>
+        /// In the event we need to cancel the periodic effect selection process for any reason
+        /// </summary>
         public void CancelPeriodicEffectSelection()
         {
             if (statusLevelPeriodicCoroutine != null)

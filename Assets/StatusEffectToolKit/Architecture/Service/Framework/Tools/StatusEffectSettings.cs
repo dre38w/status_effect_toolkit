@@ -17,6 +17,9 @@ namespace Service.Framework.Tools
 
         public StatusEffectManager.ConfigFields statusEffectManagerConfig = new StatusEffectManager.ConfigFields();
 
+        /// <summary>
+        /// The data associated with the overall Status Level
+        /// </summary>
         [Serializable]
         public class StatusLevelConfig
         {

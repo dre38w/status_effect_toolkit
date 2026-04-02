@@ -21,6 +21,10 @@ namespace Service.Framework.StatusSystem
             StatusManager.AddActionHandlers(this);
         }
 
+        /// <summary>
+        /// Does Update logic
+        /// </summary>
+        /// <param name="deltaTime"></param>
         public virtual void ActionUpdate(float deltaTime)
         {
 
