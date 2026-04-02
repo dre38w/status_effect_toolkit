@@ -61,6 +61,7 @@ MonoBehaviour:
   minAttackDistance: 10
   fieldOfVisionConeAngle: 45
   waitTimeBetweenWaypoints: 3
+  waitTimeBetweenAttacks: 2
   lineOfSight: {fileID: 4828740051211643848}
   debugMode: 0
 --- !u!65 &4296256577453270806
@@ -119,8 +120,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAudio
   clips:
-  - {fileID: 8300000, guid: 8776d1c399e6b5845bc29c199d867ef2, type: 3}
-  - {fileID: 8300000, guid: a04150e7524f5e14582236d2b97c3fec, type: 3}
   - {fileID: 8300000, guid: dbcb7cedd7517024f84e5162ce216139, type: 3}
   audioSource: {fileID: 699599923559323072}
   playClipWaitTime: 3
