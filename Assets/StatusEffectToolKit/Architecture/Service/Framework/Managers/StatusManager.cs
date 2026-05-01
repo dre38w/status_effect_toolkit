@@ -68,20 +68,6 @@ namespace Service.Framework.StatusSystem
             Instance = this;
             //load in the data
             statusSettings = StatusSettingsUtility.StatusEffectSettings;
-
-            ValidateData();
-        }
-
-        /// <summary>
-        /// Validate any required data
-        /// </summary>
-        private void ValidateData()
-        {
-            if (statusSettings.statusLevels.Count != statusSettings.maxStatusLevel)
-            {
-                Debug.LogError("Status Level count is not equal to the max status level." +
-                    "Please open the Status Level Toolkit and make sure the status level count is equal to the max status level.");
-            }
         }
 
         private void Start()

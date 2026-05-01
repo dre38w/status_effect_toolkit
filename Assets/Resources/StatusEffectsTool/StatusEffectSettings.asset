@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418c90c585e8e9a49ba91de6d0925b90, type: 3}
   m_Name: StatusEffectSettings
   m_EditorClassIdentifier: Assembly-CSharp::Service.Framework.Tools.StatusEffectSettings
-  maxStatusLevel: 3
   statusLevels:
   - chooseRandomStatusEffect: 0
     isPeriodicStatusLevel: 0
@@ -41,60 +40,6 @@ MonoBehaviour:
       minWaitTime: 0
       maxWaitTime: 0
       restartWaitTime: 0
-  - chooseRandomStatusEffect: 0
-    isPeriodicStatusLevel: 0
-    isDurationRandom: 0
-    minDuration: 0
-    maxDuration: 0
-    duration: 0
-    isRestartWaitTimeRandom: 0
-    minWaitTime: 0
-    maxWaitTime: 0
-    restartWaitTime: 0
-    statusEffectsData:
-    - statusEffect: 1
-      severity: 0
-      requireWaitTimeToStart: 0
-      isStartWaitTimeRandom: 0
-      minWaitTimeToStart: 0
-      maxWaitTimeToStart: 0
-      waitTimeToStart: 0
-      isPeriodicEffect: 0
-      isDurationRandom: 0
-      minDuration: 0
-      maxDuration: 0
-      duration: 0
-      isRestartWaitTimeRandom: 0
-      minWaitTime: 0
-      maxWaitTime: 0
-      restartWaitTime: 0
-  - chooseRandomStatusEffect: 0
-    isPeriodicStatusLevel: 0
-    isDurationRandom: 0
-    minDuration: 0
-    maxDuration: 0
-    duration: 0
-    isRestartWaitTimeRandom: 0
-    minWaitTime: 0
-    maxWaitTime: 0
-    restartWaitTime: 0
-    statusEffectsData:
-    - statusEffect: 2
-      severity: 0
-      requireWaitTimeToStart: 0
-      isStartWaitTimeRandom: 0
-      minWaitTimeToStart: 0
-      maxWaitTimeToStart: 0
-      waitTimeToStart: 0
-      isPeriodicEffect: 1
-      isDurationRandom: 0
-      minDuration: 0
-      maxDuration: 0
-      duration: 2
-      isRestartWaitTimeRandom: 0
-      minWaitTime: 0
-      maxWaitTime: 0
-      restartWaitTime: 5
   statusEffectManagerConfig:
     requireWaitTimeBetweenEffects: 1
     isRandomTimeToSelectEffects: 1

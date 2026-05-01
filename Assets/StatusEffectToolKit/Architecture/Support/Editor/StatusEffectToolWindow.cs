@@ -55,12 +55,6 @@ namespace Support.Editor
 
             //draw all the content
             statusEffectSettingsContent.DrawStatusEffectConfig();
-            statusEffectSettingsContent.DrawMaxStatusLevel();
-            if (toolSettings.statusLevels.Count != toolSettings.maxStatusLevel)
-            {
-                EditorGUILayout.HelpBox("Please make sure the Status Level count is equal to the Max Status Level.", MessageType.Error);
-
-            }
             statusEffectSettingsContent.DrawStatusLevel();
 
             //add a little bit of space at the bottom of the scroll view to make it easier to see the last bit of content

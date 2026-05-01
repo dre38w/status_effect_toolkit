@@ -51,7 +51,7 @@ namespace Service.Framework.StatusSystem
         private void HandleTrackingStatusLevel()
         {
             //stop tracking status level if we already maxed out
-            if (StatusManager.Instance.StatusLevel == StatusManager.Instance.StatusSettings.maxStatusLevel || !IsTrackingStatusLevel)
+            if (StatusManager.Instance.StatusLevel == StatusManager.Instance.StatusSettings.statusLevels.Count || !IsTrackingStatusLevel)
             {
                 return;
             }

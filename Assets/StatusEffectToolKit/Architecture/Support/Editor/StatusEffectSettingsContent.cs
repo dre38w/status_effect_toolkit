@@ -11,7 +11,6 @@ namespace Support.Editor
     {
         private readonly SerializedProperty statusLevelConfigsProp;
         private readonly SerializedProperty statusEffectManagerConfigProp;
-        private readonly SerializedProperty maxStatusLevelProp;
 
         /// <summary>
         /// Get the serialized content to draw
@@ -20,7 +19,6 @@ namespace Support.Editor
         public StatusEffectSettingsContent(SerializedObject serializedSettings)
         {
             statusEffectManagerConfigProp = serializedSettings.FindProperty(nameof(StatusEffectSettings.statusEffectManagerConfig));
-            maxStatusLevelProp = serializedSettings.FindProperty(nameof(StatusEffectSettings.maxStatusLevel));
             statusLevelConfigsProp = serializedSettings.FindProperty(nameof(StatusEffectSettings.statusLevels));
         }
 
@@ -32,15 +30,6 @@ namespace Support.Editor
             using (InspectorDrawContext.ToolWindowScope())
             {
                 EditorGUILayout.PropertyField(statusEffectManagerConfigProp, true);
-                EditorGUILayout.Space(10);
-            }
-        }
-
-        public void DrawMaxStatusLevel()
-        {
-            using (InspectorDrawContext.ToolWindowScope())
-            {
-                EditorGUILayout.PropertyField(maxStatusLevelProp, true);
                 EditorGUILayout.Space(10);
             }
         }

@@ -11,8 +11,6 @@ namespace Service.Framework.Tools
 {
     public class StatusEffectSettings : ScriptableObject
     {
-        public int maxStatusLevel;
-
         public List<StatusLevelConfig> statusLevels = new List<StatusLevelConfig>();
 
         public StatusEffectManager.ConfigFields statusEffectManagerConfig = new StatusEffectManager.ConfigFields();

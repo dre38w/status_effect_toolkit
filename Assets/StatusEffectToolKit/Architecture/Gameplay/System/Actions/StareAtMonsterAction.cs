@@ -107,7 +107,7 @@ namespace Gameplay.System.StatusSystem.Actions
                 return;
             }
             //stop tracking status level if we already maxed out
-            if (StatusManager.Instance.StatusLevel == StatusManager.Instance.StatusSettings.maxStatusLevel)
+            if (StatusManager.Instance.StatusLevel == StatusManager.Instance.StatusSettings.statusLevels.Count)
             {
                 ResetLookState();
                 return;

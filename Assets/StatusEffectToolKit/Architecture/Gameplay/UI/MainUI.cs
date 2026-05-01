@@ -5,16 +5,16 @@
 using Service.Framework.StatusSystem;
 using UnityEngine;
 using Service.Framework.Tools;
-using TMPro;
+using UnityEngine.UI;
 
 namespace Gameplay.UI
 {
     public class MainUI : MonoBehaviour
     {
         [SerializeField]
-        private TMP_Text statusLevelText;
+        private Text statusLevelText;
         [SerializeField]
-        private TMP_Text statusEffectText;
+        private Text statusEffectText;
 
         [SerializeField]
         private GameObject uiContent;

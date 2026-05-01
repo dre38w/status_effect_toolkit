@@ -17,8 +17,6 @@ namespace Support.Editor
         public const string MAX_TIME = nameof(StatusEffectManager.ConfigFields.maxTimeToSelectEffect);
         public const string MIN_TIME = nameof(StatusEffectManager.ConfigFields.minTimeToSelectEffect);
 
-        //reference the max status level
-        public const string MAX_STATUS_LEVEL = nameof(StatusEffectSettings.maxStatusLevel);
 
         /// <summary>
         /// Status level fields
