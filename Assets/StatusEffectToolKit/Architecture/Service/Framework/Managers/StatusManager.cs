@@ -81,7 +81,7 @@ namespace Service.Framework.StatusSystem
 
             if (statusSettings.statusLevels == null || statusSettings.statusLevels.Count == 0)
             {
-                Debug.LogError("StatusEffectSettings.statusEffectsData is empty.  Index 0 must exist.  Please populate it in the Status Effects Tool.");
+                Debug.LogWarning("StatusEffectSettings.statusEffectsData is empty.  Please populate it in the Status Effects Tool.");
             }
 
             //initialize the config
@@ -169,6 +169,11 @@ namespace Service.Framework.StatusSystem
         /// <param name="value">Pass positive value to increase and a negative value to decrease</param>
         public void OnStatusLevelUpdate(int value)
         {
+            //if list is empty, early out to avoid hard stopping the game
+            if (statusSettings.statusLevels.Count == 0)
+            {
+                return;
+            }
             statusLevel += value;
             statusLevel = Mathf.Clamp(statusLevel, 0, statusSettings.statusLevels.Count - 1);
 

@@ -43,6 +43,11 @@ namespace Gameplay.UI
 
         private void UpdateStatusEffect(StatusEffectsData effect)
         {
+            //if list is empty, early out to avoid hard stopping the game
+            if (StatusManager.Instance.StatusSettings.statusLevels.Count == 0)
+            {
+                return;
+            }
             if (StatusManager.Instance.StatusLevel < StatusManager.Instance.StatusSettings.statusLevels.Count)
             {
                 statusEffectText.text = effect.statusEffect.ToString();

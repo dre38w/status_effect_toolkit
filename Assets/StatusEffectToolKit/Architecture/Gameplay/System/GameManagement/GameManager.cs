@@ -69,6 +69,11 @@ namespace Gameplay.System
 
         private void OnPlayerDamaged(float value, GameObject obj)
         {
+            //if list is empty, early out to avoid hard stopping the game
+            if (StatusManager.Instance.StatusSettings.statusLevels.Count == 0)
+            {
+                return;
+            }
             if (playerHealth.State == HealthHandler.CurrentState.Dead)
             {
                 //set the status level to the max, of which should always be set to the Death status effect
