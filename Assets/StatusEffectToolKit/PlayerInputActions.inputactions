@@ -32,15 +32,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "LoadNewLevel",
-                    "type": "Button",
-                    "id": "17ccbbac-51ed-40b5-85e8-0f29e9a2f19a",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -118,17 +109,6 @@
                     "processors": "",
                     "groups": ";PlayerControls",
                     "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7c0bfb1a-8656-4389-a01c-78bb95c7d246",
-                    "path": "<Keyboard>/l",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LoadNewLevel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

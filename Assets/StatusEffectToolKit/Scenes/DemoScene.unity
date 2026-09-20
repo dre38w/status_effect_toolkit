@@ -726,6 +726,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a3ee7e33e5a2ad4a9c54068bb0719f2, type: 3}
+--- !u!114 &1572483568420581386 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7020863943463530602, guid: 0a3ee7e33e5a2ad4a9c54068bb0719f2, type: 3}
+  m_PrefabInstance: {fileID: 1572483568420581385}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528b1a80d32fff843a5b76b3437dc556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
 --- !u!1001 &2276894334121307312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -892,6 +903,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4107443735012913197, guid: 2fee71e9fee56b440aa2803f828afb58, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1572483568420581386}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

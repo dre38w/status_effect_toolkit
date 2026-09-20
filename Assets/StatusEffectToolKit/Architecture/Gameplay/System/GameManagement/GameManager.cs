@@ -13,9 +13,6 @@ namespace Gameplay.System
 {
     public class GameManager : MonoBehaviour
     {
-        [HideInInspector]
-        public UnityEvent OnLevelLoaded = new UnityEvent();
-
         public static GameManager Instance;
 
         private HealthHandler playerHealth;
@@ -51,14 +48,14 @@ namespace Gameplay.System
         {
             StatusManager.Instance.CleanUpActionHandlers();
             StatusManager.Instance.SetActionHandlersUpdateState(true);
-            StartCoroutine(Initialize());
+            StartCoroutine(InitializePlayer());
         }
 
         /// <summary>
-        /// Do any delay logic
+        /// Do any startup logic for the player
         /// </summary>
         /// <returns></returns>
-        private IEnumerator Initialize()
+        private IEnumerator InitializePlayer()
         {
             //do a brief delay before giving the player control for a smoother flow
             ReferenceRegistry.Instance.Player.RemoveControl();            
@@ -79,15 +76,6 @@ namespace Gameplay.System
                 //set the status level to the max, of which should always be set to the Death status effect
                 StatusManager.Instance.SetStatusLevel(StatusManager.Instance.StatusSettings.statusLevels.Count - 1);
             }
-        }
-
-        public void OnLoadNewLevel(InputAction.CallbackContext context)
-        {
-            if (!context.performed)
-            {
-                return;
-            }
-            OnLevelLoaded.Invoke();
         }
 
         private void OnDestroy()

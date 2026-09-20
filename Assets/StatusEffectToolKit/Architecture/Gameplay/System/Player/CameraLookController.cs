@@ -25,6 +25,8 @@ namespace Gameplay.System.Player
         private void Start()
         {
             playerController = player.GetComponent<PlayerController>();
+            //Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
         }
 
         private void Update()

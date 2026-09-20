@@ -20,7 +20,7 @@ namespace Gameplay.System.Player
         private Vector2 moveInput;
         private CharacterController characterController;
 
-        private bool hasControl;
+        private bool hasControl = true;
         public bool HasControl
         {
             get { return hasControl; }
@@ -30,8 +30,7 @@ namespace Gameplay.System.Player
         private void Start()
         {
             characterController = GetComponent<CharacterController>();
-            //Cursor.lockState = CursorLockMode.Locked;
-            //Cursor.visible = false;
+            
         }
 
         private void Update()
