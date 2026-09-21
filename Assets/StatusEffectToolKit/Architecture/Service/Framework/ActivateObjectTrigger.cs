@@ -29,6 +29,7 @@ namespace Service.Framework.StatusSystem
                 return;
             }
             interactor.SetCurrentInteractable(interactable);
+            interactor.SetInteractableState(true);
             OnEnteredTriggerObject.Invoke();
         }
 
@@ -40,6 +41,7 @@ namespace Service.Framework.StatusSystem
                 return;
             }
             interactor.ClearCurrentInteractable(interactable);
+            interactor.SetInteractableState(false);
             OnExitedTriggerObject.Invoke();
         }
     }

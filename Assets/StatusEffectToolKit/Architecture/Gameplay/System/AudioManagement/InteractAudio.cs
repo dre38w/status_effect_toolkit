@@ -25,6 +25,10 @@ namespace Gameplay.AudioManagement
 
         private void PlayInteractClip()
         {
+            if (!interactor.CanInteract)
+            {
+                return;
+            }
             AudioManager.Instance.PlayOneShotClip(clip, audioSource);
         }
 

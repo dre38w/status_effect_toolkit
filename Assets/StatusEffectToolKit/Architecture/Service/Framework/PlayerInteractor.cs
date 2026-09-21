@@ -16,6 +16,9 @@ namespace Service.Framework
 
         public IInteractable CurrentInteractable { get; private set; }
 
+        private bool canInteract;
+        public bool CanInteract => canInteract;
+
         public void SetCurrentInteractable(IInteractable interactable) => CurrentInteractable = interactable;
 
         public void ClearCurrentInteractable(IInteractable interactable)
@@ -35,6 +38,11 @@ namespace Service.Framework
             //pass this game object so systems know which object is being interacted with
             CurrentInteractable?.Interact(gameObject);
             OnInteracted.Invoke();
+        }
+
+        public void SetInteractableState(bool state)
+        {
+            canInteract = state;
         }
     }
 }
